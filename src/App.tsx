@@ -8,13 +8,13 @@ import { Register } from '@/pages/Register';
 import { ForgotPassword } from '@/pages/ForgotPassword';
 import { Dashboard } from '@/pages/Dashboard';
 import { Sessions } from '@/pages/Sessions';
-// Import des autres pages à créer
 import { Agents } from '@/pages/Agents';
 import { ShopDataPage } from './pages/ShopData';
 import { CreateSession } from '@/pages/CreateSession';
 import { CreateAgent } from '@/pages/CreateAgent';
 import { AgentTemplates } from '@/pages/AgentTemplates';
 import { Settings } from './pages/Settings';
+import { LandingPage } from '@/pages/LandingPage';
 
 function App() {
   return (
@@ -22,27 +22,28 @@ function App() {
       <AppProvider>
         <Router>
           <Routes>
+            <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route 
-              path="/" 
+              path="/dashboard" 
               element={
                 <ProtectedRoute>
                   <Layout />
                 </ProtectedRoute>
               }
             >
-              <Route index element={<Navigate to="/dashboard" replace />} />
-              <Route path="dashboard" element={<Dashboard />} />
+              <Route index element={<Navigate to="/dashboard/home" replace />} />
+              <Route path="home" element={<Dashboard />} />
               <Route path="sessions" element={<Sessions />} />
               <Route path="agents" element={<Agents />} />
               <Route path="shop-data" element={<ShopDataPage />} />
+              <Route path="settings" element={<Settings />} />
+            </Route>
             <Route path="/sessions/new" element={<CreateSession />} />
             <Route path="/agents/new" element={<CreateAgent />} />
             <Route path="/agent-templates" element={<AgentTemplates />} />
-            <Route path="/settings" element={<Settings />} />
-            </Route>
           </Routes>
         </Router>
       </AppProvider>
