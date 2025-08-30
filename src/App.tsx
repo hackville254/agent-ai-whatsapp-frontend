@@ -22,12 +22,15 @@ function App() {
       <AppProvider>
         <Router>
           <Routes>
+            {/* Public routes */}
             <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
-            <Route 
-              path="/dashboard" 
+
+            {/* Protected dashboard routes */}
+            <Route
+              path="/dashboard"
               element={
                 <ProtectedRoute>
                   <Layout />
@@ -41,9 +44,32 @@ function App() {
               <Route path="shop-data" element={<ShopDataPage />} />
               <Route path="settings" element={<Settings />} />
             </Route>
-            <Route path="/sessions/new" element={<CreateSession />} />
-            <Route path="/agents/new" element={<CreateAgent />} />
-            <Route path="/agent-templates" element={<AgentTemplates />} />
+
+            {/* Protected standalone routes */}
+            <Route
+              path="/agent-templates"
+              element={
+                <ProtectedRoute>
+                  <AgentTemplates />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/sessions/new"
+              element={
+                <ProtectedRoute>
+                  <CreateSession />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/agents/new"
+              element={
+                <ProtectedRoute>
+                  <CreateAgent />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
         </Router>
       </AppProvider>

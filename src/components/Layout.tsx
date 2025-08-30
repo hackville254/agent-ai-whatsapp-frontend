@@ -20,11 +20,13 @@ import {
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
-  { name: 'Sessions WhatsApp', href: '/sessions', icon: MessageSquare },
-  { name: 'Agents IA', href: '/agents', icon: Bot },
+  { name: 'Sessions WhatsApp', href: '/dashboard/sessions', icon: MessageSquare },
+  { name: 'Agents IA', href: '/dashboard/agents', icon: Bot },
   { name: 'Templates', href: '/agent-templates', icon: LayoutTemplateIcon },
+
   /* { name: 'Données Boutique', href: '/shop-data', icon: Database }, */
-  { name: 'Paramètres', href: '/settings', icon: Settings },
+  { name: 'Paramètres', href: '/dashboard/settings', icon: Settings },
+
 ];
 
 export const Layout = () => {
